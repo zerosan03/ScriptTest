@@ -16,19 +16,16 @@ public class Boss
         Debug.Log(damage + "のダメージを受けた");
         this.hp -= damage;
     }
-    public void magic1(int j)
+    public void magic1()
     {
-        for (int ii = 0; ii < j; ii++)
+        if (mp >= 5)
         {
-            if (mp > 5)
-            {
-                mp -= 5;
-                Debug.Log("魔法攻撃をした。残りMPは" + this.mp + "。");
-            }
-            else
-            {
-                Debug.Log("MPが足りないため、魔法が使えない。");
-            }
+            mp -= 5;
+            Debug.Log("魔法攻撃をした。残りMPは" + this.mp + "。");
+        }
+        else
+        {
+            Debug.Log("MPが足りないため、魔法が使えない。");
         }
     }
 }
@@ -49,7 +46,8 @@ public class Test : MonoBehaviour
         Boss lastboss = new Boss();
         lastboss.Attack();
         lastboss.Defence(3);
-        lastboss.magic1(11);
+        for(int iii=0;iii<11;iii++)
+        lastboss.magic1();
     }
     void Update()
     {
